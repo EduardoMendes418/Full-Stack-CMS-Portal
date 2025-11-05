@@ -1,0 +1,30 @@
+{
+  "name": "cms-backend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Backend para CMS com JSON Server e upload de arquivos",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "server": "node server.js"
+  },
+  "keywords": [
+    "cms",
+    "json-server",
+    "backend",
+    "api"
+  ],
+  "author": "Seu Nome",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "json-server": "^0.17.4",
+    "multer": "^2.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
