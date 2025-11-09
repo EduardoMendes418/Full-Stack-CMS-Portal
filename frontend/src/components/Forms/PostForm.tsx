@@ -3,6 +3,7 @@ import { Post, Category } from '../../types';
 import { categoriesAPI } from '../../services/api';
 import { generateSlug } from '../../utils/helpers';
 import Button from '../UI/Button';
+import { useTranslation } from 'react-i18next';
 
 interface PostFormProps {
   post?: Post;
@@ -23,6 +24,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
     tags: '',
     featuredImage: ''
   });
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -67,7 +69,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
     const postData = {
       ...formData,
       tags: formData.tags.split(',').map(tag => tag.trim()).filter(Boolean),
-      authorId: 1, // En un caso real, esto vendría del usuario autenticado
+      authorId: 1, 
       createdAt: post?.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       ...(formData.status === 'published' && !post?.publishedAt && { 
@@ -83,7 +85,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
       <div className="grid grid-cols-1 gap-6">
         <div>
           <label htmlFor="title" className="block text-sm font-medium text-gray-700">
-            Título *
+            {t('posts.titleField')} *
           </label>
           <input
             type="text"
@@ -97,7 +99,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
 
         <div>
           <label htmlFor="slug" className="block text-sm font-medium text-gray-700">
-            Slug *
+            {t('posts.slug')} *
           </label>
           <input
             type="text"
@@ -111,7 +113,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
 
         <div>
           <label htmlFor="excerpt" className="block text-sm font-medium text-gray-700">
-            Extracto
+            {t('posts.excerpt')}
           </label>
           <textarea
             id="excerpt"
@@ -124,7 +126,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
 
         <div>
           <label htmlFor="content" className="block text-sm font-medium text-gray-700">
-            Contenido *
+            {t('posts.content')} *
           </label>
           <textarea
             id="content"
@@ -139,7 +141,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
         <div className="grid grid-cols-2 gap-4">
           <div>
             <label htmlFor="category" className="block text-sm font-medium text-gray-700">
-              Categoría *
+              {t('posts.category')} *
             </label>
             <select
               id="category"
@@ -148,7 +150,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
               onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
             >
-              <option value="">Seleccionar categoría</option>
+              <option value="">{t('posts.selectCategory')}</option>
               {categories.map(category => (
                 <option key={category.id} value={category.slug}>
                   {category.name}
@@ -159,7 +161,7 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
 
           <div>
             <label htmlFor="status" className="block text-sm font-medium text-gray-700">
-              Estado *
+              {t('posts.status')} *
             </label>
             <select
               id="status"
@@ -168,21 +170,21 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
               onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as 'draft' | 'published' | 'archived' }))}
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
             >
-              <option value="draft">Borrador</option>
-              <option value="published">Publicado</option>
-              <option value="archived">Archivado</option>
+              <option value="draft">{t('posts.draft')}</option>
+              <option value="published">{t('posts.published')}</option>
+              <option value="archived">{t('posts.archived')}</option>
             </select>
           </div>
         </div>
 
         <div>
           <label htmlFor="tags" className="block text-sm font-medium text-gray-700">
-            Etiquetas
+            {t('posts.tags')}
           </label>
           <input
             type="text"
             id="tags"
-            placeholder="Separar por comas"
+            placeholder={t('posts.separateTags')}
             value={formData.tags}
             onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
@@ -191,12 +193,12 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
 
         <div>
           <label htmlFor="featuredImage" className="block text-sm font-medium text-gray-700">
-            Imagen Destacada
+            {t('posts.featuredImage')}
           </label>
           <input
             type="url"
             id="featuredImage"
-            placeholder="URL de la imagen"
+            placeholder={t('posts.imageUrl')}
             value={formData.featuredImage}
             onChange={(e) => setFormData(prev => ({ ...prev, featuredImage: e.target.value }))}
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
@@ -211,13 +213,13 @@ const PostForm: React.FC<PostFormProps> = ({ post, onSubmit, onCancel, loading =
           onClick={onCancel}
           disabled={loading}
         >
-          Cancelar
+          {t('common.cancel')}
         </Button>
         <Button
           type="submit"
           loading={loading}
         >
-          {post ? 'Actualizar Post' : 'Crear Post'}
+          {post ? t('common.update') : t('common.create')}
         </Button>
       </div>
     </form>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { User } from '../../types';
 import { validateEmail } from '../../utils/helpers';
 import Button from '../UI/Button';
+import { useTranslation } from 'react-i18next';
 
 interface UserFormProps {
   user?: User;
@@ -18,6 +19,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
     role: 'author' as 'admin' | 'editor' | 'author'
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (user) {
@@ -34,19 +36,19 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'El nombre es requerido';
+      newErrors.name = t('users.errors.nameRequired');
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = 'El email es requerido';
+      newErrors.email = t('users.errors.emailRequired');
     } else if (!validateEmail(formData.email)) {
-      newErrors.email = 'El email no es válido';
+      newErrors.email = t('users.errors.invalidEmail');
     }
 
     if (!user && !formData.password) {
-      newErrors.password = 'La contraseña es requerida';
+      newErrors.password = t('users.errors.passwordRequired');
     } else if (formData.password && formData.password.length < 6) {
-      newErrors.password = 'La contraseña debe tener al menos 6 caracteres';
+      newErrors.password = t('users.errors.passwordLength');
     }
 
     setErrors(newErrors);
@@ -64,7 +66,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
       updatedAt: new Date().toISOString()
     };
 
-    // No enviar password vacío en actualización
+    // Don't send empty password in update
     if (user && !formData.password) {
       delete (userData as any).password;
     }
@@ -77,7 +79,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
       <div className="grid grid-cols-1 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Nombre Completo *
+            {t('users.fullName')} *
           </label>
           <input
             type="text"
@@ -93,7 +95,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
 
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-            Email *
+            {t('auth.email')} *
           </label>
           <input
             type="email"
@@ -109,12 +111,12 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
 
         <div>
           <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-            Contraseña {!user && '*'}
+            {t('auth.password')} {!user && '*'}
           </label>
           <input
             type="password"
             id="password"
-            placeholder={user ? 'Dejar vacío para mantener la actual' : ''}
+            placeholder={user ? t('users.keepPassword') : ''}
             value={formData.password}
             onChange={(e) => setFormData(prev => ({ ...prev, password: e.target.value }))}
             className={`mt-1 block w-full border rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500 ${
@@ -126,7 +128,7 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
 
         <div>
           <label htmlFor="role" className="block text-sm font-medium text-gray-700">
-            Rol *
+            {t('users.role')} *
           </label>
           <select
             id="role"
@@ -134,9 +136,9 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
             onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value as 'admin' | 'editor' | 'author' }))}
             className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
           >
-            <option value="author">Autor</option>
-            <option value="editor">Editor</option>
-            <option value="admin">Administrador</option>
+            <option value="author">{t('users.author')}</option>
+            <option value="editor">{t('users.editor')}</option>
+            <option value="admin">{t('users.admin')}</option>
           </select>
         </div>
       </div>
@@ -148,13 +150,13 @@ const UserForm: React.FC<UserFormProps> = ({ user, onSubmit, onCancel, loading =
           onClick={onCancel}
           disabled={loading}
         >
-          Cancelar
+          {t('common.cancel')}
         </Button>
         <Button
           type="submit"
           loading={loading}
         >
-          {user ? 'Actualizar Usuario' : 'Crear Usuario'}
+          {user ? t('common.update') : t('common.create')}
         </Button>
       </div>
     </form>

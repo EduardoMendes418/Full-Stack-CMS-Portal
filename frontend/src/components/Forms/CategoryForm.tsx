@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Category } from '../../types';
+import { useTranslation } from 'react-i18next';
 import { generateSlug } from '../../utils/helpers';
 import Button from '../UI/Button';
+import { Category } from '../../types';
+
 
 interface CategoryFormProps {
   category?: Category;
@@ -17,6 +19,8 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category, onSubmit, onCance
     description: '',
     color: '#3B82F6'
   });
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (category) {
@@ -48,7 +52,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category, onSubmit, onCance
       <div className="grid grid-cols-1 gap-6">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
-            Nombre *
+            {t('categories.name')} *
           </label>
           <input
             type="text"
@@ -62,7 +66,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category, onSubmit, onCance
 
         <div>
           <label htmlFor="slug" className="block text-sm font-medium text-gray-700">
-            Slug *
+            {t('posts.slug')} *
           </label>
           <input
             type="text"
@@ -76,7 +80,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category, onSubmit, onCance
 
         <div>
           <label htmlFor="description" className="block text-sm font-medium text-gray-700">
-            Descripción
+            {t('categories.description')}
           </label>
           <textarea
             id="description"
@@ -89,7 +93,7 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category, onSubmit, onCance
 
         <div>
           <label htmlFor="color" className="block text-sm font-medium text-gray-700">
-            Color
+            {t('categories.color')}
           </label>
           <div className="mt-1 flex items-center space-x-3">
             <input
@@ -105,19 +109,12 @@ const CategoryForm: React.FC<CategoryFormProps> = ({ category, onSubmit, onCance
       </div>
 
       <div className="flex justify-end space-x-3">
-        <Button
-          type="button"
-          variant="outline"
-          onClick={onCancel}
-          disabled={loading}
-        >
-          Cancelar
+        <Button type="button" variant="outline" onClick={onCancel} disabled={loading}>
+          {t('common.cancel')}
         </Button>
-        <Button
-          type="submit"
-          loading={loading}
-        >
-          {category ? 'Actualizar Categoría' : 'Crear Categoría'}
+
+        <Button type="submit" loading={loading}>
+          {category ? t('common.update') : t('common.create')}
         </Button>
       </div>
     </form>

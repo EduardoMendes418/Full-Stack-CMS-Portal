@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Upload, X } from 'lucide-react';
 import Button from '../UI/Button';
+import { useTranslation } from 'react-i18next';
 
 interface MediaUploadProps {
   onUpload: (file: File) => void;
@@ -11,6 +12,7 @@ interface MediaUploadProps {
 const MediaUpload: React.FC<MediaUploadProps> = ({ onUpload, onClose, loading = false }) => {
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -81,7 +83,7 @@ const MediaUpload: React.FC<MediaUploadProps> = ({ onUpload, onClose, loading = 
               className="text-red-600 hover:text-red-800 text-sm"
             >
               <X className="w-4 h-4 inline mr-1" />
-              Eliminar
+              {t('media.remove')}
             </button>
           </div>
         ) : (
@@ -92,7 +94,7 @@ const MediaUpload: React.FC<MediaUploadProps> = ({ onUpload, onClose, loading = 
                 htmlFor="file-upload"
                 className="relative cursor-pointer bg-white rounded-md font-medium text-primary-600 hover:text-primary-500 focus-within:outline-none"
               >
-                <span>Subir un archivo</span>
+                <span>{t('media.uploadFile')}</span>
                 <input
                   id="file-upload"
                   name="file-upload"
@@ -102,10 +104,10 @@ const MediaUpload: React.FC<MediaUploadProps> = ({ onUpload, onClose, loading = 
                   accept="image/*,.pdf,.doc,.docx"
                 />
               </label>
-              <p className="pl-1">o arrastra y suelta</p>
+              <p className="pl-1">{t('media.dragDrop')}</p>
             </div>
             <p className="text-xs text-gray-500">
-              PNG, JPG, PDF, DOC hasta 10MB
+              {t('media.supportedFormats')}
             </p>
           </div>
         )}
@@ -118,7 +120,7 @@ const MediaUpload: React.FC<MediaUploadProps> = ({ onUpload, onClose, loading = 
           onClick={onClose}
           disabled={loading}
         >
-          Cancelar
+          {t('common.cancel')}
         </Button>
         <Button
           type="submit"
@@ -126,7 +128,7 @@ const MediaUpload: React.FC<MediaUploadProps> = ({ onUpload, onClose, loading = 
           disabled={!file || loading}
           loading={loading}
         >
-          Subir Archivo
+          {t('media.upload')}
         </Button>
       </div>
     </div>
