@@ -7,6 +7,7 @@ import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
 import UserForm from '../components/Forms/UserForm';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import { useTranslation } from 'react-i18next';
 
 const Users: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -15,6 +16,7 @@ const Users: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingUser, setEditingUser] = useState<User | null>(null);
   const [formLoading, setFormLoading] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchUsers();
@@ -42,14 +44,14 @@ const Users: React.FC = () => {
   };
 
   const handleDeleteUser = async (id: number) => {
-    if (!confirm('¿Estás seguro de que quieres eliminar este usuario?')) return;
+    if (!confirm(t('common.confirmDelete'))) return;
 
     try {
       await usersAPI.delete(id);
       setUsers(users.filter(user => user.id !== id));
     } catch (error) {
       console.error('Error deleting user:', error);
-      alert('Error al eliminar el usuario');
+      alert(t('common.error'));
     }
   };
 
@@ -66,7 +68,7 @@ const Users: React.FC = () => {
       setIsModalOpen(false);
     } catch (error) {
       console.error('Error saving user:', error);
-      alert('Error al guardar el usuario');
+      alert(t('common.error'));
     } finally {
       setFormLoading(false);
     }
@@ -79,9 +81,9 @@ const Users: React.FC = () => {
 
   const getRoleBadge = (role: string) => {
     const roleConfig = {
-      admin: { color: 'bg-red-100 text-red-800', label: 'Administrador' },
-      editor: { color: 'bg-blue-100 text-blue-800', label: 'Editor' },
-      author: { color: 'bg-green-100 text-green-800', label: 'Autor' },
+      admin: { color: 'bg-red-100 text-red-800', label: t('users.admin') },
+      editor: { color: 'bg-blue-100 text-blue-800', label: t('users.editor') },
+      author: { color: 'bg-green-100 text-green-800', label: t('users.author') },
     };
 
     const config = roleConfig[role as keyof typeof roleConfig] || roleConfig.author;
@@ -105,12 +107,12 @@ const Users: React.FC = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Gestión de Usuarios</h1>
-          <p className="text-gray-600">Administra los usuarios del sistema</p>
+          <h1 className="text-2xl font-bold text-gray-900">{t('users.title')}</h1>
+          <p className="text-gray-600">{t('users.subtitle')}</p>
         </div>
         <Button onClick={handleCreateUser}>
           <Plus className="w-4 h-4 mr-2" />
-          Nuevo Usuario
+          {t('users.newUser')}
         </Button>
       </div>
       
@@ -119,7 +121,7 @@ const Users: React.FC = () => {
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
-            placeholder="Buscar usuarios..."
+            placeholder={t('common.search')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
@@ -133,19 +135,19 @@ const Users: React.FC = () => {
             <thead className="bg-gray-50">
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Usuario
+                  {t('users.user')}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Email
+                  {t('auth.email')}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Rol
+                  {t('users.role')}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Fecha de Creación
+                  {t('users.creationDate')}
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Acciones
+                  {t('common.actions')}
                 </th>
               </tr>
             </thead>
@@ -178,12 +180,14 @@ const Users: React.FC = () => {
                       <button 
                         onClick={() => handleEditUser(user)}
                         className="text-blue-600 hover:text-blue-800 transition-colors"
+                        title={t('common.edit')}
                       >
                         <Edit className="w-4 h-4" />
                       </button>
                       <button 
                         onClick={() => handleDeleteUser(user.id)}
                         className="text-red-600 hover:text-red-800 transition-colors"
+                        title={t('common.delete')}
                       >
                         <Trash2 className="w-4 h-4" />
                       </button>
@@ -200,9 +204,11 @@ const Users: React.FC = () => {
             <div className="mx-auto h-12 w-12 text-gray-400">
               <Search className="w-12 h-12" />
             </div>
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No se encontraron usuarios</h3>
+            <h3 className="mt-2 text-sm font-medium text-gray-900">
+              {t('common.noSearchResults')}
+            </h3>
             <p className="mt-1 text-sm text-gray-500">
-              {searchTerm ? 'Intenta con otros términos de búsqueda.' : 'Comienza creando un nuevo usuario.'}
+              {searchTerm ? t('common.tryDifferentSearch') : t('users.startCreating')}
             </p>
           </div>
         )}
@@ -211,7 +217,7 @@ const Users: React.FC = () => {
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={editingUser ? 'Editar Usuario' : 'Crear Nuevo Usuario'}
+        title={editingUser ? t('users.editUser') : t('users.newUser')}
         size="md"
       >
         <UserForm
