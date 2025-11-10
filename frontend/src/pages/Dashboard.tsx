@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { postsAPI, categoriesAPI, usersAPI } from '../services/api';
 import { Post } from '../types';
 import { FileText, Folder, Users, Eye } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Dashboard: React.FC = () => {
   const [stats, setStats] = useState({
@@ -11,6 +12,7 @@ const Dashboard: React.FC = () => {
     publishedPosts: 0,
   });
   const [recentPosts, setRecentPosts] = useState<Post[]>([]);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -58,32 +60,31 @@ const Dashboard: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-        <p className="text-gray-600">Resumen general del sistema</p>
+        <h1 className="text-2xl font-bold text-gray-900">{t('dashboard.title')}</h1>
+        <p className="text-gray-600">{t('dashboard.subtitle')}</p>
       </div>
 
- 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
-          title="Total Posts"
+          title={t('dashboard.totalPosts')}
           value={stats.totalPosts}
           icon={FileText}
           color="text-blue-600"
         />
         <StatCard
-          title="Posts Publicados"
+          title={t('dashboard.publishedPosts')}
           value={stats.publishedPosts}
           icon={Eye}
           color="text-green-600"
         />
         <StatCard
-          title="Categorías"
+          title={t('navigation.categories')}
           value={stats.totalCategories}
           icon={Folder}
           color="text-purple-600"
         />
         <StatCard
-          title="Usuarios"
+          title={t('navigation.users')}
           value={stats.totalUsers}
           icon={Users}
           color="text-orange-600"
@@ -92,7 +93,7 @@ const Dashboard: React.FC = () => {
 
       <div className="bg-white rounded-lg shadow-sm border">
         <div className="px-6 py-4 border-b">
-          <h2 className="text-lg font-semibold text-gray-900">Posts Recientes</h2>
+          <h2 className="text-lg font-semibold text-gray-900">{t('dashboard.recentPosts')}</h2>
         </div>
         <div className="divide-y">
           {recentPosts.map((post) => (

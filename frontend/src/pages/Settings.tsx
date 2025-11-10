@@ -4,6 +4,7 @@ import { settingsAPI } from '../services/api';
 import { Save } from 'lucide-react';
 import Button from '../components/UI/Button';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import { useTranslation } from 'react-i18next';
 
 const Settings: React.FC = () => {
   const [settings, setSettings] = useState<SettingsType | null>(null);
@@ -20,6 +21,7 @@ const Settings: React.FC = () => {
     language: 'es',
     maintenanceMode: false
   });
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchSettings();
@@ -45,10 +47,10 @@ const Settings: React.FC = () => {
     try {
       await settingsAPI.update(formData);
       setSettings({ ...settings, ...formData } as SettingsType);
-      alert('Configuración guardada exitosamente');
+      alert(t('settings.saveSuccess'));
     } catch (error) {
       console.error('Error saving settings:', error);
-      alert('Error al guardar la configuración');
+      alert(t('common.error'));
     } finally {
       setSaving(false);
     }
@@ -73,21 +75,22 @@ const Settings: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Configuración</h1>
-        <p className="text-gray-600">Configura los ajustes del sitio</p>
+        <h1 className="text-2xl font-bold text-gray-900">{t('settings.title')}</h1>
+        <p className="text-gray-600">{t('settings.subtitle')}</p>
       </div>
 
       <form onSubmit={handleSubmit}>
         <div className="space-y-6">
+          {/* General Settings */}
           <div className="bg-white rounded-lg shadow-sm border">
             <div className="px-6 py-4 border-b">
-              <h2 className="text-lg font-semibold text-gray-900">Configuración General</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('settings.general.title')}</h2>
             </div>
             <div className="p-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="siteName" className="block text-sm font-medium text-gray-700">
-                    Nombre del Sitio *
+                    {t('settings.general.siteName')} *
                   </label>
                   <input
                     type="text"
@@ -102,7 +105,7 @@ const Settings: React.FC = () => {
 
                 <div>
                   <label htmlFor="siteUrl" className="block text-sm font-medium text-gray-700">
-                    URL del Sitio *
+                    {t('settings.general.siteUrl')} *
                   </label>
                   <input
                     type="url"
@@ -118,7 +121,7 @@ const Settings: React.FC = () => {
 
               <div>
                 <label htmlFor="siteDescription" className="block text-sm font-medium text-gray-700">
-                  Descripción del Sitio
+                  {t('settings.general.siteDescription')}
                 </label>
                 <textarea
                   id="siteDescription"
@@ -132,7 +135,7 @@ const Settings: React.FC = () => {
 
               <div>
                 <label htmlFor="adminEmail" className="block text-sm font-medium text-gray-700">
-                  Email del Administrador *
+                  {t('settings.general.adminEmail')} *
                 </label>
                 <input
                   type="email"
@@ -147,16 +150,16 @@ const Settings: React.FC = () => {
             </div>
           </div>
 
-  
+          {/* Posts Settings */}
           <div className="bg-white rounded-lg shadow-sm border">
             <div className="px-6 py-4 border-b">
-              <h2 className="text-lg font-semibold text-gray-900">Configuración de Posts</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('settings.posts.title')}</h2>
             </div>
             <div className="p-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="postsPerPage" className="block text-sm font-medium text-gray-700">
-                    Posts por Página
+                    {t('settings.posts.postsPerPage')}
                   </label>
                   <input
                     type="number"
@@ -172,7 +175,7 @@ const Settings: React.FC = () => {
 
                 <div>
                   <label htmlFor="dateFormat" className="block text-sm font-medium text-gray-700">
-                    Formato de Fecha
+                    {t('settings.posts.dateFormat')}
                   </label>
                   <select
                     id="dateFormat"
@@ -190,16 +193,16 @@ const Settings: React.FC = () => {
             </div>
           </div>
 
-    
+          {/* Regional Settings */}
           <div className="bg-white rounded-lg shadow-sm border">
             <div className="px-6 py-4 border-b">
-              <h2 className="text-lg font-semibold text-gray-900">Configuración Regional</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('settings.regional.title')}</h2>
             </div>
             <div className="p-6 space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <label htmlFor="timezone" className="block text-sm font-medium text-gray-700">
-                    Zona Horaria
+                    {t('settings.regional.timezone')}
                   </label>
                   <select
                     id="timezone"
@@ -208,18 +211,18 @@ const Settings: React.FC = () => {
                     onChange={handleInputChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                   >
-                    <option value="UTC-3">UTC-3 (Argentina)</option>
-                    <option value="UTC-5">UTC-5 (Colombia, Perú)</option>
-                    <option value="UTC-6">UTC-6 (México)</option>
-                    <option value="UTC-8">UTC-8 (California)</option>
-                    <option value="UTC+0">UTC+0 (Londres)</option>
-                    <option value="UTC+1">UTC+1 (España)</option>
+                    <option value="UTC-3">UTC-3 ({t('settings.regional.argentina')})</option>
+                    <option value="UTC-5">UTC-5 ({t('settings.regional.colombiaPeru')})</option>
+                    <option value="UTC-6">UTC-6 ({t('settings.regional.mexico')})</option>
+                    <option value="UTC-8">UTC-8 ({t('settings.regional.california')})</option>
+                    <option value="UTC+0">UTC+0 ({t('settings.regional.london')})</option>
+                    <option value="UTC+1">UTC+1 ({t('settings.regional.spain')})</option>
                   </select>
                 </div>
 
                 <div>
                   <label htmlFor="language" className="block text-sm font-medium text-gray-700">
-                    Idioma
+                    {t('settings.regional.language')}
                   </label>
                   <select
                     id="language"
@@ -228,18 +231,19 @@ const Settings: React.FC = () => {
                     onChange={handleInputChange}
                     className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary-500 focus:border-primary-500"
                   >
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
-                    <option value="pt">Português</option>
+                    <option value="es">{t('settings.regional.spanish')}</option>
+                    <option value="en">{t('settings.regional.english')}</option>
+                    <option value="pt">{t('settings.regional.portuguese')}</option>
                   </select>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Maintenance Settings */}
           <div className="bg-white rounded-lg shadow-sm border">
             <div className="px-6 py-4 border-b">
-              <h2 className="text-lg font-semibold text-gray-900">Modo Mantenimiento</h2>
+              <h2 className="text-lg font-semibold text-gray-900">{t('settings.maintenance.title')}</h2>
             </div>
             <div className="p-6">
               <div className="flex items-center">
@@ -252,11 +256,11 @@ const Settings: React.FC = () => {
                   className="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded"
                 />
                 <label htmlFor="maintenanceMode" className="ml-2 block text-sm text-gray-900">
-                  Activar modo mantenimiento
+                  {t('settings.maintenance.enable')}
                 </label>
               </div>
               <p className="mt-1 text-sm text-gray-500">
-                Cuando está activado, el sitio mostrará una página de mantenimiento a los visitantes.
+                {t('settings.maintenance.description')}
               </p>
             </div>
           </div>
@@ -264,7 +268,7 @@ const Settings: React.FC = () => {
           <div className="flex justify-end">
             <Button type="submit" loading={saving}>
               <Save className="w-4 h-4 mr-2" />
-              Guardar Cambios
+              {t('settings.saveChanges')}
             </Button>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -10,6 +11,7 @@ const Login: React.FC = () => {
   
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -21,10 +23,10 @@ const Login: React.FC = () => {
       if (success) {
         navigate('/dashboard');
       } else {
-        setError('Credenciales inválidas');
+        setError(t('auth.invalidCredentials'));
       }
     } catch (err) {
-      setError('Error al iniciar sesión');
+      setError(t('auth.loginError'));
     } finally {
       setLoading(false);
     }
@@ -37,7 +39,7 @@ const Login: React.FC = () => {
           CMS Portal
         </h2>
         <p className="mt-2 text-center text-sm text-gray-600">
-          Inicia sesión en tu cuenta
+          {t('auth.login')}
         </p>
       </div>
 
@@ -52,7 +54,7 @@ const Login: React.FC = () => {
             
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                Email
+                {t('auth.email')}
               </label>
               <div className="mt-1">
                 <input
@@ -70,7 +72,7 @@ const Login: React.FC = () => {
 
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Contraseña
+                {t('auth.password')}
               </label>
               <div className="mt-1">
                 <input
@@ -92,7 +94,7 @@ const Login: React.FC = () => {
                 disabled={loading}
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 disabled:opacity-50"
               >
-                {loading ? 'Iniciando sesión...' : 'Iniciar sesión'}
+                {loading ? t('auth.signingIn') : t('auth.signIn')}
               </button>
             </div>
           </form>
@@ -103,7 +105,7 @@ const Login: React.FC = () => {
                 <div className="w-full border-t border-gray-300" />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500">Credenciales de prueba</span>
+                <span className="px-2 bg-white text-gray-500">{t('auth.testCredentials')}</span>
               </div>
             </div>
             <div className="mt-4 text-sm text-gray-600">

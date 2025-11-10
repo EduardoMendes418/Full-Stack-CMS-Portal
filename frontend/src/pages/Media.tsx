@@ -7,6 +7,7 @@ import Button from '../components/UI/Button';
 import Modal from '../components/UI/Modal';
 import MediaUpload from '../components/Forms/MediaUpload';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
+import { useTranslation } from 'react-i18next';
 
 const MediaLibrary: React.FC = () => {
   const [media, setMedia] = useState<Media[]>([]);
@@ -14,6 +15,7 @@ const MediaLibrary: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchMedia();
@@ -41,21 +43,21 @@ const MediaLibrary: React.FC = () => {
       setIsUploadModalOpen(false);
     } catch (error) {
       console.error('Error uploading file:', error);
-      alert('Error al subir el archivo');
+      alert(t('media.uploadError'));
     } finally {
       setUploadLoading(false);
     }
   };
 
   const handleDeleteMedia = async (id: number) => {
-    if (!confirm('¿Estás seguro de que quieres eliminar este archivo?')) return;
+    if (!confirm(t('common.confirmDelete'))) return;
 
     try {
       await mediaAPI.delete(id);
       setMedia(media.filter(item => item.id !== id));
     } catch (error) {
       console.error('Error deleting media:', error);
-      alert('Error al eliminar el archivo');
+      alert(t('common.error'));
     }
   };
 
@@ -82,22 +84,21 @@ const MediaLibrary: React.FC = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Biblioteca de Media</h1>
-          <p className="text-gray-600">Gestiona tus imágenes y archivos</p>
+          <h1 className="text-2xl font-bold text-gray-900">{t('media.title')}</h1>
+          <p className="text-gray-600">{t('media.subtitle')}</p>
         </div>
         <Button onClick={() => setIsUploadModalOpen(true)}>
           <Plus className="w-4 h-4 mr-2" />
-          Subir Archivo
+          {t('media.upload')}
         </Button>
       </div>
 
-  
       <div className="bg-white rounded-lg shadow-sm border p-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
           <input
             type="text"
-            placeholder="Buscar archivos..."
+            placeholder={t('common.search')}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
@@ -105,7 +106,6 @@ const MediaLibrary: React.FC = () => {
         </div>
       </div>
 
-  
       <div className="bg-white rounded-lg shadow-sm border">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 p-4">
           {filteredMedia.map((item) => (
@@ -132,12 +132,14 @@ const MediaLibrary: React.FC = () => {
                   <button 
                     onClick={() => window.open(item.url, '_blank')}
                     className="text-blue-600 hover:text-blue-800 transition-colors"
+                    title={t('media.download')}
                   >
                     <Download className="w-4 h-4" />
                   </button>
                   <button 
                     onClick={() => handleDeleteMedia(item.id)}
                     className="text-red-600 hover:text-red-800 transition-colors"
+                    title={t('common.delete')}
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -152,9 +154,11 @@ const MediaLibrary: React.FC = () => {
             <div className="mx-auto h-12 w-12 text-gray-400">
               <Search className="w-12 h-12" />
             </div>
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No se encontraron archivos</h3>
+            <h3 className="mt-2 text-sm font-medium text-gray-900">
+              {searchTerm ? t('common.noSearchResults') : t('common.noItemsFound')}
+            </h3>
             <p className="mt-1 text-sm text-gray-500">
-              {searchTerm ? 'Intenta con otros términos de búsqueda.' : 'Comienza subiendo un archivo.'}
+              {searchTerm ? t('common.tryDifferentSearch') : t('media.startUploading')}
             </p>
           </div>
         )}
@@ -163,7 +167,7 @@ const MediaLibrary: React.FC = () => {
       <Modal
         isOpen={isUploadModalOpen}
         onClose={() => setIsUploadModalOpen(false)}
-        title="Subir Archivo"
+        title={t('media.upload')}
         size="md"
       >
         <MediaUpload
