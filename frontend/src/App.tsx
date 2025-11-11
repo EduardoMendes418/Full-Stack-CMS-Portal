@@ -9,7 +9,7 @@ import Categories from './pages/Categories';
 import Media from './pages/Media';
 import Users from './pages/Users';
 import Settings from './pages/Settings';
-
+import './i18n'; 
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();

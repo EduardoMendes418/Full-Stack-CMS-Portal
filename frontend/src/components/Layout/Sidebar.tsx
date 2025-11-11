@@ -8,17 +8,19 @@ import {
   Users,
   Settings
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const Sidebar: React.FC = () => {
   const location = useLocation();
+  const { t } = useTranslation();
 
   const menuItems = [
-    { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/posts', icon: FileText, label: 'Posts' },
-    { path: '/categories', icon: Folder, label: 'Categorías' },
-    { path: '/media', icon: Image, label: 'Media' },
-    { path: '/users', icon: Users, label: 'Usuarios' },
-    { path: '/settings', icon: Settings, label: 'Configuración' },
+    { path: '/dashboard', icon: LayoutDashboard, label: t('navigation.dashboard') },
+    { path: '/posts', icon: FileText, label: t('navigation.posts') },
+    { path: '/categories', icon: Folder, label: t('navigation.categories') },
+    { path: '/media', icon: Image, label: t('navigation.media') },
+    { path: '/users', icon: Users, label: t('navigation.users') },
+    { path: '/settings', icon: Settings, label: t('navigation.settings') },
   ];
 
   return (
@@ -26,6 +28,7 @@ const Sidebar: React.FC = () => {
       <div className="p-4">
         <h1 className="text-2xl font-bold">CMS Portal</h1>
       </div>
+
       <nav className="mt-8">
         {menuItems.map((item) => {
           const Icon = item.icon;
