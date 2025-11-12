@@ -1,152 +1,152 @@
 {
-  "common": {
-    "actions": "Acciones",
-    "welcome": "Bienvenido",
-    "loading": "Cargando...",
-    "search": "Buscar...",
-    "cancel": "Cancelar",
-    "save": "Guardar",
-    "delete": "Eliminar",
-    "edit": "Editar",
-    "create": "Crear",
-    "update": "Actualizar",
-    "confirmDelete": "¿Estás seguro de que quieres eliminar este elemento?",
-    "error": "Ocurrió un error",
-    "success": "Operación completada con éxito",
-    "noSearchResults": "No se encontraron elementos",
-    "noItemsFound": "No se encontraron elementos",
-    "tryDifferentSearch": "Intenta con otros términos de búsqueda",
-    "startCreating": "Comienza creando un nuevo elemento"
-  },
-  "auth": {
-    "login": "Iniciar Sesión",
-    "logout": "Cerrar Sesión",
-    "email": "Correo Electrónico",
-    "password": "Contraseña",
-    "signIn": "Iniciar Sesión",
-    "signingIn": "Iniciando sesión...",
-    "invalidCredentials": "Credenciales inválidas",
-    "loginError": "Error al iniciar sesión",
-    "testCredentials": "Credenciales de prueba"
-  },
-  "navigation": {
-    "dashboard": "Panel",
-    "posts": "Posts",
-    "categories": "Categorías",
-    "media": "Medios",
-    "users": "Usuarios",
-    "settings": "Configuración"
-  },
-  "dashboard": {
-    "title": "Panel de Control",
-    "subtitle": "Resumen del sistema",
-    "totalPosts": "Total de Posts",
-    "publishedPosts": "Posts Publicados",
-    "recentPosts": "Posts Recientes"
-  },
-  "posts": {
-    "title": "Gestión de Posts",
-    "subtitle": "Crea y gestiona los posts del sitio",
-    "newPost": "Nuevo Post",
-    "editPost": "Editar Post",
-    "titleField": "Título",
-    "content": "Contenido",
-    "excerpt": "Extracto",
-    "status": "Estado",
-    "category": "Categoría",
-    "tags": "Etiquetas",
-    "featuredImage": "Imagen Destacada",
-    "slug": "Slug",
-    "draft": "Borrador",
-    "published": "Publicado",
-    "archived": "Archivado",
-    "selectCategory": "Seleccionar categoría",
-    "separateTags": "Separar por comas",
-    "imageUrl": "URL de la imagen",
-    "allStatuses": "Todos los estados",
-    "allCategories": "Todas las categorías",
-    "date": "Fecha",
-    "startCreating": "Comienza creando un nuevo post."
-  },
-  "categories": {
-    "title": "Gestión de Categorías",
-    "subtitle": "Organiza tus posts en categorías",
-    "newCategory": "Nueva Categoría",
-    "editCategory": "Editar Categoría",
-    "name": "Nombre",
-    "description": "Descripción",
-    "color": "Color",
-    "postsCount": "posts"
-  },
-  "media": {
-    "title": "Biblioteca de Medios",
-    "subtitle": "Gestiona tus imágenes y archivos",
-    "upload": "Subir Archivo",
-    "uploadFile": "Subir un archivo",
-    "dragDrop": "o arrastra y suelta",
-    "supportedFormats": "PNG, JPG, PDF, DOC hasta 10MB",
-    "remove": "Eliminar",
-    "download": "Descargar",
-    "uploadError": "Error al subir el archivo",
-    "startUploading": "Comienza subiendo un archivo."
-  },
-  "users": {
-    "user": "Nombre",
-    "title": "Gestión de Usuarios",
-    "subtitle": "Gestiona los usuarios del sistema",
-    "newUser": "Nuevo Usuario",
-    "editUser": "Editar Usuario",
-    "fullName": "Nombre Completo",
-    "role": "Rol",
-    "admin": "Administrador",
-    "editor": "Editor",
-    "author": "Autor",
-    "creationDate": "Fecha de Creación",
-    "keepPassword": "Dejar vacío para mantener la actual",
-    "startCreating": "Comienza creando un nuevo usuario.",
-    "errors": {
-      "nameRequired": "El nombre es requerido",
-      "emailRequired": "El email es requerido",
-      "invalidEmail": "El email no es válido",
-      "passwordRequired": "La contraseña es requerida",
-      "passwordLength": "La contraseña debe tener al menos 6 caracteres"
-    }
-  },
-  "settings": {
-    "title": "Configuración",
-    "subtitle": "Configura los ajustes del sitio",
-    "saveChanges": "Guardar Cambios",
-    "saveSuccess": "Configuración guardada exitosamente",
-    "general": {
-      "title": "Configuración General",
-      "siteName": "Nombre del Sitio",
-      "siteUrl": "URL del Sitio",
-      "siteDescription": "Descripción del Sitio",
-      "adminEmail": "Email del Administrador"
-    },
-    "posts": {
-      "title": "Configuración de Posts",
-      "postsPerPage": "Posts por Página",
-      "dateFormat": "Formato de Fecha"
-    },
-    "regional": {
-      "title": "Configuración Regional",
-      "timezone": "Zona Horaria",
-      "language": "Idioma",
-      "argentina": "Argentina",
-      "colombiaPeru": "Colombia, Perú",
-      "mexico": "México",
-      "california": "California",
-      "london": "Londres",
-      "spain": "España",
-      "spanish": "Español",
-      "english": "Inglés",
-      "portuguese": "Portugués"
-    },
-    "maintenance": {
-      "title": "Modo Mantenimiento",
-      "enable": "Activar modo mantenimiento",
-      "description": "Cuando está activado, el sitio mostrará una página de mantenimiento a los visitantes."
-    }
-  }
+	"common": {
+		"actions": "Acciones",
+		"welcome": "Bienvenido",
+		"loading": "Cargando...",
+		"search": "Buscar...",
+		"cancel": "Cancelar",
+		"save": "Guardar",
+		"delete": "Eliminar",
+		"edit": "Editar",
+		"create": "Crear",
+		"update": "Actualizar",
+		"confirmDelete": "¿Estás seguro de que quieres eliminar este elemento?",
+		"error": "Ocurrió un error",
+		"success": "Operación completada con éxito",
+		"noSearchResults": "No se encontraron elementos",
+		"noItemsFound": "No se encontraron elementos",
+		"tryDifferentSearch": "Intenta con otros términos de búsqueda",
+		"startCreating": "Comienza creando un nuevo elemento"
+	},
+	"auth": {
+		"login": "Iniciar Sesión",
+		"logout": "Cerrar Sesión",
+		"email": "Correo Electrónico",
+		"password": "Contraseña",
+		"signIn": "Iniciar Sesión",
+		"signingIn": "Iniciando sesión...",
+		"invalidCredentials": "Credenciales inválidas",
+		"loginError": "Error al iniciar sesión",
+		"testCredentials": "Credenciales de prueba"
+	},
+	"navigation": {
+		"dashboard": "Panel",
+		"posts": "Posts",
+		"categories": "Categorías",
+		"media": "Medios",
+		"users": "Usuarios",
+		"settings": "Configuración"
+	},
+	"dashboard": {
+		"title": "Panel de Control",
+		"subtitle": "Resumen del sistema",
+		"totalPosts": "Total de Posts",
+		"publishedPosts": "Posts Publicados",
+		"recentPosts": "Posts Recientes"
+	},
+	"posts": {
+		"title": "Gestión de Posts",
+		"subtitle": "Crea y gestiona los posts del sitio",
+		"newPost": "Nuevo Post",
+		"editPost": "Editar Post",
+		"titleField": "Título",
+		"content": "Contenido",
+		"excerpt": "Extracto",
+		"status": "Estado",
+		"category": "Categoría",
+		"tags": "Etiquetas",
+		"featuredImage": "Imagen Destacada",
+		"slug": "Slug",
+		"draft": "Borrador",
+		"published": "Publicado",
+		"archived": "Archivado",
+		"selectCategory": "Seleccionar categoría",
+		"separateTags": "Separar por comas",
+		"imageUrl": "URL de la imagen",
+		"allStatuses": "Todos los estados",
+		"allCategories": "Todas las categorías",
+		"date": "Fecha",
+		"startCreating": "Comienza creando un nuevo post."
+	},
+	"categories": {
+		"title": "Gestión de Categorías",
+		"subtitle": "Organiza tus posts en categorías",
+		"newCategory": "Nueva Categoría",
+		"editCategory": "Editar Categoría",
+		"name": "Nombre",
+		"description": "Descripción",
+		"color": "Color",
+		"postsCount": "posts"
+	},
+	"media": {
+		"title": "Biblioteca de Medios",
+		"subtitle": "Gestiona tus imágenes y archivos",
+		"upload": "Subir Archivo",
+		"uploadFile": "Subir un archivo",
+		"dragDrop": "o arrastra y suelta",
+		"supportedFormats": "PNG, JPG, PDF, DOC hasta 10MB",
+		"remove": "Eliminar",
+		"download": "Descargar",
+		"uploadError": "Error al subir el archivo",
+		"startUploading": "Comienza subiendo un archivo."
+	},
+	"users": {
+		"user": "Nombre",
+		"title": "Gestión de Usuarios",
+		"subtitle": "Gestiona los usuarios del sistema",
+		"newUser": "Nuevo Usuario",
+		"editUser": "Editar Usuario",
+		"fullName": "Nombre Completo",
+		"role": "Rol",
+		"admin": "Administrador",
+		"editor": "Editor",
+		"author": "Autor",
+		"creationDate": "Fecha de Creación",
+		"keepPassword": "Dejar vacío para mantener la actual",
+		"startCreating": "Comienza creando un nuevo usuario.",
+		"errors": {
+			"nameRequired": "El nombre es requerido",
+			"emailRequired": "El email es requerido",
+			"invalidEmail": "El email no es válido",
+			"passwordRequired": "La contraseña es requerida",
+			"passwordLength": "La contraseña debe tener al menos 6 caracteres"
+		}
+	},
+	"settings": {
+		"title": "Configuración",
+		"subtitle": "Configura los ajustes del sitio",
+		"saveChanges": "Guardar Cambios",
+		"saveSuccess": "Configuración guardada exitosamente",
+		"general": {
+			"title": "Configuración General",
+			"siteName": "Nombre del Sitio",
+			"siteUrl": "URL del Sitio",
+			"siteDescription": "Descripción del Sitio",
+			"adminEmail": "Email del Administrador"
+		},
+		"posts": {
+			"title": "Configuración de Posts",
+			"postsPerPage": "Posts por Página",
+			"dateFormat": "Formato de Fecha"
+		},
+		"regional": {
+			"title": "Configuración Regional",
+			"timezone": "Zona Horaria",
+			"language": "Idioma",
+			"argentina": "Argentina",
+			"colombiaPeru": "Colombia, Perú",
+			"mexico": "México",
+			"california": "California",
+			"london": "Londres",
+			"spain": "España",
+			"spanish": "Español",
+			"english": "Inglés",
+			"portuguese": "Portugués"
+		},
+		"maintenance": {
+			"title": "Modo Mantenimiento",
+			"enable": "Activar modo mantenimiento",
+			"description": "Cuando está activado, el sitio mostrará una página de mantenimiento a los visitantes."
+		}
+	}
 }
