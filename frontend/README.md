@@ -1,73 +1,76 @@
-# React + TypeScript + Vite
+# 📘 Sistema de Gerenciamento
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um sistema completo para gestão de conteúdo com interface moderna, responsiva e suporte multilíngue.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## React Compiler
+### ✨ Principais Módulos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Dashboard:** Visão geral do sistema com métricas e posts recentes
+- **Gestão de Posts:** Criação, edição e organização de posts
+- **Categorias:** Sistema de categorização com cores personalizadas
+- **Biblioteca de Mídia:** Upload e gerenciamento de arquivos
+- **Gestão de Usuários:** Controle de acesso com diferentes níveis de permissão
+- **Configurações:** Personalização completa do sistema
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🌍 Internacionalização
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Suporte completo a múltiplos idiomas:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+- 🇺🇸 **Inglês**
+- 🇧🇷 **Português**
+- 🇪🇸 **Espanhol**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🎨 Interface Moderna
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Design responsivo com **Tailwind CSS**
+- Componentes **reutilizáveis e acessíveis**
+- **Modo escuro/claro** integrado
+- **Animações e transições suaves**
+- **Loading states** e **skeletons** elegantes
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## 🛠 Tecnologias Utilizadas
+
+- **Frontend:** React 18 + TypeScript
+- **Roteamento:** React Router DOM
+- **Estilização:** Tailwind CSS
+- **Internacionalização:** React i18next
+- **Ícones:** Lucide React
+- **Build Tool:** Vite
+
+---
+
+## 📦 Instalação e Execução
+
+### 🔧 Pré-requisitos
+
+- Node.js **16+**
+- **npm** ou **yarn**
+
+### 💻 Passos para rodar o projeto
+
+```bash
+# Clonar o repositório
+git clone https://github.com/seu-usuario/seu-projeto.git
+
+# Entrar na pasta do projeto
+cd seu-projeto
+
+# Instalar dependências
+npm install
+# ou
+yarn install
+
+# Rodar o servidor de desenvolvimento
+npm run dev
+# ou
+yarn dev
 ```
