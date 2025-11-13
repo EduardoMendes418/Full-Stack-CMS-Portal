@@ -1,107 +1,101 @@
 {
-  "users": [
-    {
-      "id": 1,
-      "name": "Administrador",
-      "email": "admin@example.com",
-      "password": "admin123",
-      "role": "admin",
-      "createdAt": "2023-01-01T00:00:00Z",
-      "updatedAt": "2023-01-01T00:00:00Z"
-    },
-    {
-      "id": 2,
-      "name": "Editor Principal",
-      "email": "editor@example.com",
-      "password": "editor123",
-      "role": "editor",
-      "createdAt": "2023-01-02T00:00:00Z",
-      "updatedAt": "2023-01-02T00:00:00Z"
-    }
-  ],
-  "posts": [
-    {
-      "id": 1,
-      "title": "Bienvenido al CMS Portal Completo",
-      "slug": "bienvenido-al-cms-portal-completo",
-      "content": "Este es el primer post del sistema CMS completo.",
-      "excerpt": "Introducción al CMS Portal completo",
-      "status": "published",
-      "authorId": 1,
-      "category": "general",
-      "tags": [
-        "cms",
-        "react",
-        "typescript"
-      ],
-      "featuredImage": "https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=CMS+Portal",
-      "createdAt": "2023-10-01T10:00:00Z",
-      "updatedAt": "2023-10-01T10:00:00Z"
-    },
-    {
-      "title": "testedsdasd",
-      "slug": "testedsdasd",
-      "content": "teste",
-      "excerpt": "teste",
-      "status": "published",
-      "category": "general",
-      "tags": [
-        "teste"
-      ],
-      "featuredImage": "https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=CMS+Portal",
-      "authorId": 1,
-      "createdAt": "2025-11-05T16:44:42.491Z",
-      "updatedAt": "2025-11-05T16:44:42.491Z",
-      "publishedAt": "2025-11-05T16:44:42.491Z",
-      "id": 2
-    }
-  ],
-  "categories": [
-    {
-      "id": 1,
-      "name": "General",
-      "slug": "general",
-      "description": "Categoría general para posts diversos",
-      "color": "#3B82F6"
-    },
-    {
-      "id": 2,
-      "name": "Tecnología",
-      "slug": "tecnologia",
-      "description": "Posts sobre tecnología y desarrollo",
-      "color": "#10B981"
-    },
-    {
-      "name": "Eduardo ",
-      "slug": "eduardo",
-      "description": "",
-      "color": "#3ef73b",
-      "id": 3
-    }
-  ],
-  "media": [
-    {
-      "id": 1,
-      "filename": "placeholder-1.jpg",
-      "url": "https://via.placeholder.com/800x400",
-      "type": "image/jpeg",
-      "size": 102400,
-      "uploadedBy": 1,
-      "uploadedAt": "2023-10-01T09:00:00Z"
-    }
-  ],
-  "settings": [
-    {
-      "id": 1,
-      "siteName": "CMS Portal ",
-      "siteDescription": "Sistema de gestión de contenido moderno teste",
-      "siteUrl": "http://localhost:3000",
-      "adminEmail": "admin@example.com",
-      "postsPerPage": 10,
-      "timezone": "UTC-6",
-      "dateFormat": "MM/DD/YYYY",
-      "language": "en",
-      "maintenanceMode": true
-    }
-  ]
+	"users": [
+		{
+			"id": 1,
+			"name": "Administrador",
+			"email": "admin@example.com",
+			"password": "admin123",
+			"role": "admin",
+			"createdAt": "2023-01-01T00:00:00Z",
+			"updatedAt": "2023-01-01T00:00:00Z"
+		},
+		{
+			"id": 2,
+			"name": "Editor Principal",
+			"email": "editor@example.com",
+			"password": "editor123",
+			"role": "editor",
+			"createdAt": "2023-01-02T00:00:00Z",
+			"updatedAt": "2023-01-02T00:00:00Z"
+		}
+	],
+	"posts": [
+		{
+			"id": 1,
+			"title": "Bienvenido al CMS Portal Completo",
+			"slug": "bienvenido-al-cms-portal-completo",
+			"content": "Este es el primer post del sistema CMS completo.",
+			"excerpt": "Introducción al CMS Portal completo",
+			"status": "published",
+			"authorId": 1,
+			"category": "general",
+			"tags": ["cms", "react", "typescript"],
+			"featuredImage": "https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=CMS+Portal",
+			"createdAt": "2023-10-01T10:00:00Z",
+			"updatedAt": "2023-10-01T10:00:00Z"
+		},
+		{
+			"title": "testedsdasd",
+			"slug": "testedsdasd",
+			"content": "teste",
+			"excerpt": "teste",
+			"status": "published",
+			"category": "general",
+			"tags": ["teste"],
+			"featuredImage": "https://via.placeholder.com/800x400/3B82F6/FFFFFF?text=CMS+Portal",
+			"authorId": 1,
+			"createdAt": "2025-11-05T16:44:42.491Z",
+			"updatedAt": "2025-11-05T16:44:42.491Z",
+			"publishedAt": "2025-11-05T16:44:42.491Z",
+			"id": 2
+		}
+	],
+	"categories": [
+		{
+			"id": 1,
+			"name": "General",
+			"slug": "general",
+			"description": "Categoría general para posts diversos",
+			"color": "#3B82F6"
+		},
+		{
+			"id": 2,
+			"name": "Tecnología",
+			"slug": "tecnologia",
+			"description": "Posts sobre tecnología y desarrollo",
+			"color": "#10B981"
+		},
+		{
+			"name": "Eduardo ",
+			"slug": "eduardo",
+			"description": "",
+			"color": "#3ef73b",
+			"id": 3
+		}
+	],
+	"media": [
+		{
+			"id": 1,
+			"filename": "placeholder-1.jpg",
+			"url": "https://via.placeholder.com/800x400",
+			"type": "image/jpeg",
+			"size": 102400,
+			"uploadedBy": 1,
+			"uploadedAt": "2023-10-01T09:00:00Z"
+		}
+	],
+	"settings": [
+		{
+			"id": 1,
+			"siteName": "CMS Portal ",
+			"siteDescription": "Sistema de gestión de contenido moderno teste",
+			"siteUrl": "http://localhost:3000",
+			"adminEmail": "admin@example.com",
+			"postsPerPage": 10,
+			"timezone": "UTC-6",
+			"dateFormat": "MM/DD/YYYY",
+			"language": "en",
+			"maintenanceMode": true
+		}
+	]
 }
