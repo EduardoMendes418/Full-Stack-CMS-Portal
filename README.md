@@ -2,6 +2,9 @@
 
 Um sistema completo para gestão de conteúdo com interface moderna, responsiva e suporte multilíngue.
 
+<img width="1906" height="830" alt="cms" src="https://github.com/user-attachments/assets/3d448a6c-e8db-4405-9fbc-868615713395" />
+
+
 ---
 
 ## 🚀 Funcionalidades
